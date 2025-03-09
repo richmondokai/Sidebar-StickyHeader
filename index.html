@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar-StickeyHeader</title>
+    <title>Sidebar-StickyHeader</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
@@ -23,7 +22,6 @@
             padding-top: 20px;
         }
 
-        /* Header with Order Status and Fullscreen */
         .header {
             width: 100%;
             padding: none;
@@ -31,6 +29,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .header-left {
             display: flex;
             align-items: center;
@@ -43,25 +42,29 @@
         }
 
         .header-title {
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
         }
 
         .fullscreen-btn {
-            background: none;
             border: 1px solid #ccc;
-            padding: 5px 12px;
+            padding: 8px 18px;
             border-radius: 20px;
+            background: transparent;
             font-size: 0.9em;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
+            transition: background 0.3s;
         }
+
         .fullscreen-btn:hover {
-            color: #f00;
+            background: #ff5a3c;
+            color: white;
         }
-        /* McDonald's Info Card */
+
         .mcdonald-card {
             width: 90%;
             max-width: 920px;
@@ -74,11 +77,13 @@
             margin-top: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .mcd-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
+
         .mcd-logo img {
             width: 40px;
             height: 40px;
@@ -93,6 +98,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .logo img {
             width: 50px;
             height: 40px;
@@ -101,76 +107,78 @@
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
         }
+
         .logo img:hover {
             transform: scale(1.1);
         }
+
         .logo a {
             text-decoration: none;
             color: black;
             font-weight: bold;
             transition: color 0.3s ease-in-out;
         }
+
         .logo a:hover {
             color: #f00;
         }
+
         .vertical-sidebar {
-        position: fixed;
-        left: 100px;
-        top: 300px;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: black;
-        padding: 10px;
-        border-radius: 30px;
-    }
+            position: fixed;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 10px;
+            background: #222;
+            border-radius: 33px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
 
-    .sidebar-item {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #333;
-        border-radius: 50%;
-        margin: 6px 0;
-        cursor: pointer;
-    }
-
-    .sidebar-item span {
-        font-size: 20px;
-        color: white;
-    }
-
-    .sidebar-item.active {
+        .sidebar-item {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #444;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .sidebar-item.active {
         background: #ff5a3c;
     }
-        
-    .sidebar-item:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-}
+        .sidebar-item:hover {
+            background: #ff5a3c;
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
         .time {
             font-size: 1.2em;
             font-weight: bold;
         }
+
         .profile-sidebar {
-        position: fixed;
-        bottom: 70px;
-        left: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: white;
-        padding: 15px;
-        border-radius: 55px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .profile-container img {
-        width:20px;
-        height: 20px;
+            position: fixed;
+            left: 100px;
+            top: 80%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5px;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 33px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-container img {
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         margin-bottom: 10px;
         background: #3e3a3a;
@@ -181,40 +189,15 @@
     transition: transform 0.3s ease-in-out;
 }
 
-    .notification-container {
-        position: relative;
-        background: #f0f0f0;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.notification-container img {
+        width: 30px;
+        height: 30px;
         cursor: pointer;
     }
     .notification-container:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
 }
-
-    .bell-icon {
-        font-size: 24px;
-        color: black;
-    }
-
-    .notification-dot {
-        position: absolute;
-        top: 2px;
-        right: 1px;
-        width: 10px;
-        height: 10px;
-        background: red;
-        border-radius: 50%;
-    }
-
-        /* Main Container */
-      
-
         .section {
             flex: 1;
             background: white;
@@ -229,18 +212,22 @@
             margin-bottom: 15px;
         }
 
-        /* Grid Items */
         .grid-wrapper {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
+            width: 90%;
+            max-width: 920px;
             margin-top: 20px;
         }
+
         .items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
+
         .item {
             display: flex;
             justify-content: center;
@@ -251,30 +238,100 @@
             cursor: pointer;
             transition: background 0.3s ease-in-out;
         }
+
         .item:hover {
             background: #bfbfbf;
         }
+
         .ready .item {
             background: #28a745;
             color: white;
         }
+
         .ready .item:hover {
             background: #218838;
         }
+
         .ready .item:first-child {
             grid-column: span 3;
             font-size: 1.5em;
             text-align: center;
         }
+
         @media (max-width: 768px) {
+            .grid-wrapper {
+                grid-template-columns: 1fr;
+            }
+
             .container {
                 flex-direction: column;
             }
+
             .ready .item:first-child {
                 grid-column: span 1;
             }
+
+            .vertical-sidebar {
+                left: 20px;
+                top: 20px;
+                transform: translateY(0);
+                flex-direction: row;
+                border-radius: 20px;
+                padding: 5px;
+            }
+
+            .profile-sidebar {
+                left: 20px;
+                bottom: 20px;
+                flex-direction: row;
+                height: 3em;
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .profile-container img {
+                width: 25px;
+                height: 25px;
+            }
+
+            .notification-container img {
+                width: 25px;
+                height: 25px;
+            }
         }
-        
+
+        @media (max-width: 480px) {
+            .vertical-sidebar {
+                left: 10px;
+                top: 10px;
+                gap: 10px;
+            }
+
+            .profile-sidebar {
+                left: 10px;
+                bottom: 10px;
+                gap: 5px;
+            }
+
+            .sidebar-item {
+                width: 25px;
+                height: 25px;
+            }
+
+            .sidebar-item span {
+                font-size: 16px;
+            }
+
+            .profile-container img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .notification-container img {
+                width: 25px;
+                height: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -300,29 +357,36 @@
     </div>
 
     <div class="vertical-sidebar">
-        <div class="sidebar-item"><span>📄</span></div>
-        <div class="sidebar-item"><span>📡</span></div>
-        <div class="sidebar-item"><span>📊</span></div>
-        <div class="sidebar-item active"><span>💬</span></div>
-        <div class="sidebar-item"><span>📖</span></div>
-        <div class="sidebar-item"><span>📁</span></div>
+        <div class="sidebar-item"><img src="Vector.png" alt="z"></div>
+        <div class="sidebar-item"><img src="Vector (1).png" alt="z"></div>
+        <div class="sidebar-item"><img src="Vector (2).png" alt="z"></div>
+        <div class="sidebar-item active"><img src="Vector (3).png" alt="z"></div>
+        <div class="sidebar-item"><img src="Vector (4).png" alt="z"></div>
+        <div class="sidebar-item"><img src="Vector (5).png" alt="z"></div>
     </div>
     <div class="profile-sidebar">
-        <div class="profile-container">
-            <img src="me.jpg" alt="Profile">
-        </div>
-        <div class="notification-container">
-            <span class="bell-icon">🔔</span>
-            <span class="notification-dot"></span>
-        </div>
+        <div class="profile-container"><img src="me.jpg" alt="Profile"></div>
+        <div class="notification-container"><img src="Frame 7.jpg" alt="notification"></div>
     </div>
-    
-</div>    
+
     <!-- Main Content -->
     <div class="grid-wrapper">
         <div class="section preparing">
             <h2>Preparing</h2>
             <div class="items">
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
                 <div class="item">3885</div>
                 <div class="item">3885</div>
                 <div class="item">3885</div>
@@ -350,6 +414,9 @@
                 <div class="item">3885</div>
                 <div class="item">3885</div>
                 <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
+                <div class="item">3885</div>
             </div>
         </div>
     </div>
@@ -361,14 +428,14 @@
                 document.exitFullscreen();
             }
         });
-    
+
         function updateTime() {
             const timeElement = document.querySelector(".time");
             const now = new Date();
             timeElement.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
     </script>
 </body>
 </html>
