@@ -132,15 +132,26 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.fullscreen-btn:hover {
-    background: #cccccc;
-}
-
 .fullscreen-btn svg {
     width: 14px;
     height: 14px;
     stroke-width: 3;
     stroke: black; /* Icon color */
+}
+/* Fullscreen mode styles */
+:fullscreen .sub-content {
+    width: 100% !important; /* Account for 16px padding on both sides */
+    height: 100vh !important; /* Account for 16px padding on top and bottom */
+    margin-left: 0 !important;
+    padding: 16px !important; /* Add 16px padding on all sides */
+}
+
+:fullscreen .main-content {
+    margin-left: 0 !important;
+}
+
+:fullscreen .main-content {
+    margin-left: 0 !important;
 }
 
 .sub-content {
@@ -590,27 +601,53 @@ body {
         // Fullscreen functionality
         const fullscreenBtn = document.querySelector(".fullscreen-btn");
         const subContent = document.querySelector(".sub-content");
-
-        fullscreenBtn.addEventListener("click", function() {
+        const header = document.querySelector(".header");
+        const sidebar = document.querySelector(".sidebar");
+        const mainContent = document.querySelector(".main-content");
+    
+        fullscreenBtn.addEventListener("click", function () {
             if (!document.fullscreenElement) {
+                // Enter fullscreen mode
                 document.documentElement.requestFullscreen();
-                subContent.style.display = "flex"; // Show sub-content in fullscreen mode
+    
+                // Hide header and sidebar
+                header.style.display = "none";
+                sidebar.style.display = "none";
+    
+                // Adjust sub-content to take full space with 16px padding
+                subContent.style.width = "100%"; // Account for 16px padding on both sides
+                subContent.style.height = "100vh"; // Account for 16px padding on top and bottom
+                subContent.style.marginLeft = "0"; // Remove margin for sidebar
+                subContent.style.padding = "16px"; // Add 16px padding on all sides
+                mainContent.style.marginLeft = "0"; // Remove margin for sidebar
             } else {
+                // Exit fullscreen mode
                 document.exitFullscreen();
-                subContent.style.display = "none"; // Hide sub-content when exiting fullscreen
+    
+                // Show header and sidebar
+                header.style.display = "flex";
+                sidebar.style.display = "flex";
+    
+                // Reset sub-content styles
+                subContent.style.width = "";
+                subContent.style.height = "";
+                subContent.style.marginLeft = "";
+                subContent.style.padding = "";
+                mainContent.style.marginLeft = "96px"; // Restore margin for sidebar
             }
         });
-
+    
         // Update time every second (without AM/PM)
         function updateTime() {
             const timeElement = document.querySelector(".time");
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, "0");
+            const minutes = String(now.getMinutes()).padStart(2, "0");
             timeElement.innerText = `${hours}:${minutes}`;
         }
         setInterval(updateTime, 1000);
         updateTime();
     </script>
+    
 </body>
 </html>
