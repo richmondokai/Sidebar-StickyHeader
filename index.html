@@ -8,28 +8,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-   /* Base Font Size */
+
 html {
     font-size: 16px;
     height: 100%;
 }
 
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     display: flex;
-    flex-direction: row; /* Align sidebar and main content horizontally */
+    flex-direction: row;
     height: 100%;
     background: linear-gradient(67.75deg, #FFFFFF 19.18%, #FFEBE7 75.31%);
     font-family: 'DM Sans', sans-serif;
+    
 }
 
-/* Sidebar Styles */
 .sidebar {
     display: flex;
     height: 100vh;
@@ -38,10 +36,10 @@ body {
     justify-content: space-between;
     padding: 16px;
     background: transparent;
-    position: fixed; /* Make sidebar sticky */
-    left: 0; /* Fixed to the left */
-    top: 0; /* Fixed to the top */
-    z-index: 1000; /* Ensure sidebar is above other content */
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    z-index: 1000; 
 }
 
 .sidebar-logo {
@@ -89,17 +87,15 @@ body {
     background: var(--Background-White-100, #FFFFFF);
 }
 
-/* Main Content Styles */
 .main-content {
-    flex: 1; /* Take up remaining space */
-    height: 100vh; /* Full height of the viewport */
+    flex: 1; 
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 96px; /* Add margin to avoid overlapping with the sidebar */
-    overflow-y: auto; /* Allow main content to scroll */
+    margin-left: 96px; 
+    overflow-y: auto; 
 }
-
 
 .header {
     width: 100%;
@@ -116,6 +112,7 @@ body {
     font-weight: bold;
     letter-spacing: -0.03em;
 }
+
 .fullscreen-btn {
     display: flex;
     align-items: center;
@@ -128,22 +125,20 @@ body {
     font-weight: 700;
     cursor: pointer;
 }
+
 .fullscreen-btn svg {
     width: 14px;
     height: 14px;
     stroke-width: 3;
-    stroke: black; /* Icon color */
-}
-/* Fullscreen mode styles */
-:fullscreen .sub-content {
-    width: 100% !important; /* Account for 16px padding on both sides */
-    height: 100vh !important; /* Account for 16px padding on top and bottom */
-    margin-left: 0 !important;
-    padding: 16px !important; /* Add 16px padding on all sides */
+    stroke: black; 
 }
 
-:fullscreen .main-content {
+
+:fullscreen .sub-content {
+    width: 100% !important; 
+    height: 100vh !important; 
     margin-left: 0 !important;
+    padding: 16px !important; 
 }
 
 :fullscreen .main-content {
@@ -157,6 +152,7 @@ body {
     height: 100%;
     padding-right: 16px;
     padding-left: 16px;
+    margin-bottom: 16px; 
 }
 
 .mcdonald-card {
@@ -191,7 +187,6 @@ body {
     letter-spacing: -3%;
 }
 
-/* Grid Wrapper */
 .grid-wrapper {
     display: grid;
     grid-template-columns: 1fr 383px;
@@ -201,13 +196,11 @@ body {
     margin-top: 16px;
 }
 
-/* General Section Styles */
 .section {
     display: flex;
     flex-direction: column;
 }
 
-/* Preparing Section */
 .section-preparing {
     max-width: 100%;
     height: 100%;
@@ -215,9 +208,9 @@ body {
     padding: var(--Spacing-6, 24px);
     gap: var(--Spacing-6, 24px);
     background: var(--Background-White-100, #FFFFFF);
+    margin-bottom: 16px;
 }
 
-/* Ready Section */
 .section-ready {
     width: 23.9375rem;
     height: 100%;
@@ -225,6 +218,7 @@ body {
     padding: var(--Spacing-6, 24px);
     gap: var(--Spacing-6, 24px);
     background: var(--Background-White-100, #FFFFFF);
+    margin-bottom: 16px;
 }
 
 .section h2 {
@@ -279,7 +273,6 @@ body {
     color: black;
 }
 
-/* Responsive Styles for Tablet and Mobile */
 @media (max-width: 48rem) {
     body {
         flex-direction: column;
@@ -291,20 +284,21 @@ body {
 
     .sub-content {
         width: 100%;
-        padding: 16px; /* Add padding to the sub-content */
+        padding: 16px; 
+        margin-bottom: 16px;
     }
 
     .sidebar {
         flex-direction: row;
-        justify-content: space-between; /* Space out logo and profile */
-        align-items: center; /* Vertically center items */
+        justify-content: space-between;
+        align-items: center; 
         height: 64px;
-        width: calc(100% - 32px); /* Adjust width to account for left and right spacing */
-        padding: 8px 16px; /* Add padding to the left and right */
+        width: calc(100% - 32px); 
+        padding: 8px 16px; 
         position: fixed;
-        top: 16px; /* Fixed at the top */
-        left: 16px; /* Space on the left */
-        right: 16px; /* Space on the right */
+        top: 16px; 
+        left: 16px; 
+        right: 16px; 
         z-index: 1000;
         border-radius: 48px;
         background: var(--Background-White-100, #FFF);
@@ -313,7 +307,7 @@ body {
 
     .sidebar-logo {
         padding: 0;
-        gap: 8px; /* Space between logo and text (if any) */
+        gap: 8px; 
     }
 
     .sidebar-profile {
@@ -323,9 +317,9 @@ body {
 
     .sidebar-inner {
         position: fixed;
-        bottom: 32px; /* Fixed at the bottom */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Center horizontally */
+        bottom: 32px; 
+        left: 50%;
+        transform: translateX(-50%); 
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -341,7 +335,7 @@ body {
     .main-content {
         margin-left: 0;
         padding-top: 96px; /* Add space for the fixed sidebar (64px height + 16px top + 16px bottom) */
-        padding-bottom: 16px; /* Add space for the fixed sidebar-inner at the bottom */
+        padding-bottom: 16px; /* Consistent bottom margin */
     }
 
     .mcdonald-card {
@@ -375,7 +369,7 @@ body {
 
     .section {
         width: 100%; /* Full width for sections */
-        height: auto; /* Adjust height automatically */
+        height: 100vh; /* Adjust height automatically */
         padding: 16px; /* Add padding to sections */
     }
 
@@ -402,7 +396,8 @@ body {
 
     .sub-content {
         width: 100%;
-        height: auto; /* Adjust height automatically */
+        height: 100vh; /* Adjust height automatically */
+        margin-bottom: 16px; /* Consistent bottom margin */
     }
 
     .sidebar {
@@ -424,7 +419,7 @@ body {
 
     .main-content {
         padding-top: 80px; /* Adjust for smaller screens */
-        padding-bottom: 16px;
+        padding-bottom: 16px; /* Consistent bottom margin */
     }
 
     .mcdonald-card {
