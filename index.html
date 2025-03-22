@@ -30,16 +30,14 @@ body {
 
 .sidebar {
     display: flex;
-    height: 100vh;
+    height: 100%;
     width: auto;
     flex-direction: column;
     justify-content: space-between;
     padding: 16px;
     background: transparent;
     position: fixed; 
-    left: 0; 
-    top: 0; 
-    z-index: 1000; 
+    
 }
 
 .sidebar-logo {
@@ -50,6 +48,12 @@ body {
     justify-content: center;
     gap: 8px;
     border-radius: 32px;
+}
+
+.sidebar-logo img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
 }
 
 .sidebar-inner {
@@ -89,7 +93,7 @@ body {
 
 .main-content {
     flex: 1; 
-    height: 100vh; 
+    height: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,7 +140,7 @@ body {
 
 :fullscreen .sub-content {
     width: 100% !important; 
-    height: 100vh !important; 
+    height: 100% !important; 
     margin-left: 0 !important;
     padding: 16px !important; 
 }
@@ -202,8 +206,8 @@ body {
 }
 
 .section-preparing {
-    max-width: 100%;
-    height: 100vh;
+    width: auto;
+    height: 100%;
     border-radius: 24px;
     padding: var(--Spacing-6, 24px);
     gap: var(--Spacing-6, 24px);
@@ -211,8 +215,8 @@ body {
 }
 
 .section-ready {
-    max-width: 100%;
-    height: 100vh;
+    width: auto;
+    height: 100%;
     border-radius: 24px;
     padding: var(--Spacing-6, 24px);
     gap: var(--Spacing-6, 24px);
@@ -228,7 +232,7 @@ body {
 
 .box-item {
     overflow-y: auto;
-    flex-grow: 2;
+    flex-grow: 1;
 }
 
 .items {
@@ -272,12 +276,9 @@ body {
 }
 
 @media (max-width: 48rem) {
-    body {
-        flex-direction: column;
-    }
 
     .header {
-        padding: 16px 8px 16px 8px;
+        padding: 16px 16px 16px 16px;
         padding-top: 16px;
     }
     .header h1 {
@@ -292,29 +293,28 @@ body {
 
     .sidebar {
         flex-direction: row;
-        justify-content: space-between;
-        align-items: center; 
+        align-content: center;
+        align-items: center;
         height: 64px;
-        width: calc(100% - 32px); 
-        padding: 8px 16px; 
         position: fixed;
-        top: 16px; 
-        left: 16px; 
-        right: 16px; 
-        z-index: 1000;
         border-radius: 48px;
-        background: var(--Background-White-100, #FFF);
-        box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.08);
+        background: #FFF !important; /* Ensures a solid white background */
+        width: 100%;
+        margin-top: 16px;
     }
 
     .sidebar-logo {
+        position: fixed;
         padding: 0;
-        gap: 8px; 
+        margin: 0;
+        left: 8px;
     }
 
     .sidebar-profile {
         flex-direction: row;
         padding: 0;
+        position: fixed;
+        right: 8px;
     }
 
     .sidebar-inner {
@@ -322,16 +322,12 @@ body {
         bottom: 32px; 
         left: 50%;
         transform: translateX(-50%); 
-        display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 8px; /* Space between icons */
         padding: 8px;
         z-index: 1000;
-        border-radius: 48px;
-        background: black; /* Background color for the inner sidebar */
-        box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.14);
+        
     }
 
     .main-content {
@@ -348,7 +344,6 @@ body {
         align-items: center; /* Center items vertically */
         justify-content: space-between; /* Space out logo and time */
         gap: 8px; /* Space between logo and time */
-        margin-bottom: 5px;
 
     }
 
@@ -374,7 +369,6 @@ body {
 
     .section {
         width: 100%; /* Full width for sections */
-        height: 100vh; /* Adjust height automatically */
         padding: 16px; /* Add padding to sections */
     }
 
@@ -394,6 +388,7 @@ body {
     }
 }
 
+
 @media (max-width: 30rem) {
     .header {
         padding: 16px 8px 16px 8px;
@@ -412,8 +407,9 @@ body {
         padding: 8px 16px; /* Add padding to the left and right */
     }
 
-    .sidebar-logo, .sidebar-profile {
+    .sidebar-logo img, .sidebar-profile {
         width: auto;
+        border-radius: 0;
     }
 
     .sidebar-icon {
@@ -428,11 +424,12 @@ body {
     .grid-wrapper {
         grid-template-columns: 1fr 1fr; /* Two-column layout for portrait mode */
         gap: 16px; /* Space between sections */
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .main-content {
-        padding-top: 80px; /* Adjust for smaller screens */
+        margin-left: 0;
+        padding-top: 96px; /* Adjust for smaller screens */
         padding-bottom: 16px; /* Consistent bottom margin */
     }
 
@@ -475,7 +472,9 @@ body {
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-logo">
+            <div class="sidebar-logo img">
             <img src="Logo (1).png" alt="Order Status Logo">
+            </div>
         </div>
         <div class="sidebar-inner">
             <div class="sidebar-icon">
