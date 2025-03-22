@@ -102,24 +102,30 @@ body {
 }
 
 .header {
-    width: 100%;
+    width: ;
     height: 96px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    
     padding: 24px 16px 24px 0px;
-    align-self: stretch;
+    align-items: flex-start;
+    position: fixed;
 }
 
 .header h1 {
+    position: fixed;
     font-size: 32px;
     font-weight: bold;
+    align-items: self-start;
     letter-spacing: -0.03em;
+    left: 96px;
 }
 
 .fullscreen-btn {
     display: flex;
-    align-items: center;
+    position: fixed;
+    align-items: self-end;
+    right: 32px;
     gap: 6px;
     padding: 8px 18px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -154,6 +160,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    margin-top: 88px;
     padding-right: 16px;
     padding-left: 16px;
     margin-bottom: 16px; 
@@ -282,9 +289,12 @@ body {
     .header {
         padding: 16px 16px 16px 16px;
         padding-top: 16px;
+        position: fixed;
     }
     .header h1 {
         font-size: 32px;
+        align-items: self-start;
+        left: 16px;
     }
 
     .sub-content {
@@ -295,28 +305,32 @@ body {
 
     .sidebar {
         flex-direction: row;
-        align-content: center;
-        align-items: center;
+        align-items: self-start;
         justify-content: space-between;
+        justify-items:center;
         height: 64px;
         position: fixed;
         border-radius: 48px;
         background: #FFF !important; /* Ensures a solid white background */
         width: calc(100% -32px);
         top: 16px;
-        left: 8px;
-        right: 16px;
+        left: 16px;
+        right: 32px;
     }
 
     .sidebar-logo {
         position: fixed;
-        left: 8px;
+        align-items: start;
+        left: 16px;
     }
 
     .sidebar-profile {
-        flex-direction: row;
         position: fixed;
-        right: 8px;
+        flex-direction: row;
+        align-items: end;
+        padding: 0;
+        top: 24px;
+        right: 40px;
     }
 
     .sidebar-inner {
